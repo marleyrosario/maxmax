@@ -1,6 +1,6 @@
 import jinja2
 from flask import Flask, render_template, url_for, send_from_directory
-
+import os
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader("static"))
 jinja_env.globals['url_for'] = url_for
 
@@ -56,4 +56,4 @@ def time():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,  host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
