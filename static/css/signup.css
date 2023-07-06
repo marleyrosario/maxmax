@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background-image: url(../images/MADMAX-FF_Sign_In_V2.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.signup-card {
+  padding: 2% 0%;
+  width: 30.5rem;
+  /* height: 29rem; */
+  flex-shrink: 0;
+  border-radius: 1.25rem !important;
+  border: 2px solid #fff !important;
+  background-color: rgba(255, 255, 255, 0.56) !important;
+  backdrop-filter: blur(10px);
+}
+
+.signup-card .card-body .form-group {
+  margin-top: 1rem;
+}
+
+.signup-card .card-body .type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signup-card .card-body .form-group > input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  border-radius: 0.625rem;
+  border: 1px solid #dfd9ef;
+
+  height: 3.125rem;
+
+  color: #8270a3;
+  font-size: 0.9375rem;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.signup-card .card-body .form-group > input[type="checkbox"] {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: 1rem;
+}
+
+.signup-card .card-body .form-group > input[type="checkbox"]:checked {
+  accent-color: #8270a3;
+  border: none;
+}
+
+.signup-card .card-body .form-group > input::placeholder {
+  color: #8270a3;
+}
+
+.signup-card .card-body .form-group > span {
+  color: #8270a3;
+  font-size: 0.9375rem;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.signup-card .card-body .form-group > span > a {
+  color: #8270a3;
+}
+
+.signup-card .card-body .password-container {
+  position: relative;
+}
+
+.signup-card .card-body .password-container > .password-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.signup-card .card-body .signup-button {
+  display: flex;
+  justify-content: center;
+  margin: 6% 0%;
+}
+
+.signup-card .card-body .signup-button > button {
+  width: 10.0625rem;
+  height: 2.5rem;
+  color: #fff;
+
+  border-radius: 0.9375rem;
+  background: linear-gradient(131deg, #a77dfc 0%, #5e17eb 100%);
+
+  border: none;
+
+  color: #fff;
+  font-size: 1.125rem;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.signup-card .card-body > .signin-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-card .card-body > .signin-account > span {
+  color: #8270a3;
+  font-size: 0.9375rem;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.signup-card .card-body > .signin-account > span > a {
+  color: #8270a3;
+  font-weight: 700;
+}
+
+@media (max-width: 530px) {
+  .signup-card {
+    width: 100%;
+  }
+}
