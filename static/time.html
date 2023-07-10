@@ -13,6 +13,8 @@
 
     <title>Time</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -20,9 +22,15 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
   </head>
   <body>
     <div>
+      <!-- Overlay -->
+      <div class="overlay"></div>
       <!-- Sidebar -->
       <div class="sidebar">
         <div class="logo">
@@ -65,13 +73,11 @@
             </div>
           </div>
 
-          <ul class="dropdown-menu dropdown-menu-lg-end w-100">
+          <ul class="dropdown-menu dropdown-menu-lg-end">
             <li><a class="dropdown-item" href="#">Menu item</a></li>
             <li><a class="dropdown-item" href="#">Menu item</a></li>
             <li>
-              <a class="new-dropdown-item dropdown-item" href="#"
-                >+Add New Brand</a
-              >
+              <a class="new-dropdown-item" href="#">+Add New Brand</a>
             </li>
           </ul>
         </div>
@@ -100,7 +106,7 @@
               <div
                 class="icon"
                 style="
-                  background-image: url(../static/images/iconamoon_profile-\(1\).png);
+                  background-image: url(../static/images/iconamoon_profile-1.png);
                 "
               ></div>
               <div class="text"><span>Profile</span></div>
@@ -219,7 +225,7 @@
               <img src="../static/images/Arrow-2.png" alt="" />
             </div>
           </div>
-          <ul class="dropdown-menu w-100">
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Menu item</a></li>
             <li><a class="dropdown-item border-0" href="#">Menu item</a></li>
           </ul>
@@ -232,38 +238,179 @@
         <div class="topbar">
           <div class="main-head">
             <div class="left-side">
-              <span> Connect Profile </span>
+              <span> </span>
             </div>
             <div class="right-side">
-              <div
-                class="dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <!-- <img src="../static/images/logos_youtube-icon.png" alt="" /> -->
-                <div class="icon">
-                  <img src="../static/images/logos_youtube-icon.png" alt="" />
+              <button id="test-button" type="button" class="btn btn-light">
+                <i class="bi bi-list"></i>
+              </button>
+              <div class="btn-group profile-item-dropdown">
+                <div
+                  class="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div class="icon">
+                    <img src="../static/images/logos_youtube-icon.png" alt="" />
+                  </div>
+                  <span class="text">Profile Username</span>
+                  <img src="../static/images/Arrow-2.png" alt="" />
                 </div>
-                <span class="text">Profile Username</span>
-                <img src="../static/images/Arrow-2.png" alt="" />
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <div class="icon">
+                        <img
+                          src="../static/images/logos_youtube-icon.png"
+                          alt=""
+                        />
+                      </div>
+                      <div class="text">
+                        <span class="text">Profile Username</span>
+                      </div>
+                    </a>
+                  </li>
+                  <a class="dropdown-item" href="#">
+                    <div class="icon">
+                      <img
+                        src="../static/images/logos_youtube-icon.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="text">
+                      <span class="text">Profile Username</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <div class="icon">
+                      <img
+                        src="../static/images/logos_youtube-icon.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="text">
+                      <span class="text">Profile Username</span>
+                    </div>
+                  </a>
+                  <li>
+                    <a class="new-dropdown-item border-0" href="#">
+                      +Add New Profile
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Menu item</a></li>
-                <li><a class="dropdown-item" href="#">Menu item</a></li>
-                <li><a class="dropdown-item" href="#">Menu item</a></li>
-              </ul>
             </div>
           </div>
         </div>
         <!-- Content -->
         <div class="main-content">
-          <div class="content"></div>
+          <div class="content">
+            <div class="filter-div">
+              <div class="first-half">
+                <div class="text"><span>Metric</span></div>
+                <div class="input">
+                  <form id="metricForm">
+                    <div class="form-group">
+                      <select name="metric" id="metric">
+                        <option value="">Select Option</option>
+                        <option value="metric">Metric</option>
+                      </select>
+                      <!-- <span id="companyURLError" class="error"></span> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="second-half">
+                <form id="metricForm">
+                  <div class="filters">
+                    <div class="filter-1 form-group">
+                      <select name="metric" id="metric">
+                        <option value="">Filter 1</option>
+                        <option value="metric">Metric</option>
+                      </select>
+                    </div>
+                    <div class="check-box form-group">
+                      <input type="checkbox" id="termsCheckbox" required />
+                      <span for="termsCheckbox"> Compared to ... </span>
+                    </div>
+                    <div class="filter-2 form-group">
+                      <select name="metric" id="metric">
+                        <option value="">Filter 2</option>
+                        <option value="metric">Metric</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="card graph-card">
+              <canvas id="curveChart"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector(".overlay");
+        const sidebarToggle = document.querySelector(".div-right");
+        const testButton = document.querySelector("#test-button");
+
+        sidebar.classList.remove("sidebar-open"); // Remove the sidebar-open class by default
+
+        testButton.addEventListener("click", function () {
+          sidebar.classList.add("sidebar-open");
+          overlay.classList.add("overlay-visible");
+        });
+
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.remove("sidebar-open");
+          overlay.classList.remove("overlay-visible");
+        });
+      });
+
+      // Sample data
+      var data = {
+        labels: ["T0", "T5", "T10", "T20", "T25", "T30"],
+        datasets: [
+          {
+            label: "Example Dataset",
+            data: [0, 3.5, 2.5, 5.3, 3.9, 6.7],
+            fill: false,
+            borderColor: "rgba(212, 88, 255, 1)",
+            tension: 0.4, // Increased tension for a more curved line
+          },
+          {
+            label: "Example Dataset",
+            data: [0, 1.8, 0.7, 2.9, 5.1, 3.4],
+            fill: false,
+            borderColor: "rgba(94, 23, 235, 1)",
+            tension: 0.4, // Increased tension for a more curved line
+          },
+        ],
+      };
+
+      // Configuration options
+      var options = {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      };
+
+      // Create the chart
+      var ctx = document.getElementById("curveChart").getContext("2d");
+      var chart = new Chart(ctx, {
+        type: "line",
+        data: data,
+        options: options,
+      });
+
       var submenu = document.getElementById("submenu2");
       submenu.style.display = "block";
       var test = document.getElementById("report-caret");
